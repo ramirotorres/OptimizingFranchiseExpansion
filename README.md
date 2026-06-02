@@ -27,7 +27,7 @@ This repository contains input data for IP and Heuristc Approach:
  
 * [`frontera_brasil.txt`](frontera_brasil.txt): The file contains the borders among areas (parameter $\delta_{ij}\in {0,1}$). If some oulet has no no border, the closest oulet is considered as a border. 
 
-* [`Instance_Brasil.txt`](Instance_Brasil.txt): The file contains the following dat:
+* [`Instance_Brasil.txt`](Instance_Brasil.txt): The file contains the following data:
 
              m   T
 
