@@ -17,6 +17,8 @@ C++ files:
 * [`Modelo_Heuristica.cpp`](Modelo_Heuristica.cpp): Solution Approach (Heuristic Approach) .
 * [`constantes.h`](constantes.h): Contains the Gurobi parameters and C++ libraries.
 
+## Inpuy data
+
 This repository contains input data for IP and Heuristc Approach:
 
 * [`coordenadas_brasil.txt`](coordenadas_brasil.txt): A geographical representation of potential locations for opening new franchises, based on their latitude and longitude coordinates. The total number of areas considered is $m=1,775$ and $T=5$. Moreover, each geographic area is complemented by the estimation of consumer demand ($D_ik$) during the period of the franchisee contract. This, each row represents:
