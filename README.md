@@ -3,7 +3,7 @@
 
 The files in this code repository are updated and commented versions of the code used for the following work:
 
-           # Optimizing Franchise Expansion: Insights from Emerging Markets
+           ## Optimizing Franchise Expansion: Insights from Emerging Markets
 
 ## Main files in this repository
 The code is written in C++ programming language interface. The ```Gurobi``` package is needed for the linear models and run the the C++ programs. 
