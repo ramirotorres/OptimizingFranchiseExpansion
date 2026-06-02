@@ -22,7 +22,8 @@ C++ files:
 This repository contains input data for IP and Heuristc Approach:
 
 * [`coordenadas_brasil.txt`](coordenadas_brasil.txt): A geographical representation of potential locations for opening new franchises, based on their latitude and longitude coordinates. The total number of areas considered is $m=1,775$ and $T=5$. Moreover, each geographic area is complemented by the estimation of consumer demand ($D_ik$) during the period of the franchisee contract. This, each row represents:
-id	Location_Name	latitude	longitude	Demand_year_1  Demand_year_2  Demand_year_3  Demand_year_4  Demand_year_5
+ 
+          id	Location_Name	latitude	longitude	Demand_year_1  Demand_year_2  Demand_year_3  Demand_year_4  Demand_year_5
  
 * [`frontera_brasil.txt`](frontera_brasil.txt): The file contains the borders among areas (parameter $\delta_{ij}\in {0,1}$). If some oulet has no no border, the closest oulet is considered as a border. 
 
