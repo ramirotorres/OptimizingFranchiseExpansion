@@ -17,7 +17,7 @@ C++ files:
 * [`Modelo_Heuristica.cpp`](Modelo_Heuristica.cpp): Solution Approach (Heuristic Approach) .
 * [`constantes.h`](constantes.h): Contains the Gurobi parameters and C++ libraries.
 
-## Inpuy data
+## Input data
 
 This repository contains input data for IP and Heuristc Approach:
 
