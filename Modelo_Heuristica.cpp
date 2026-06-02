@@ -257,7 +257,7 @@ int main()
 {
     cout<<endl<<endl
         <<"***********************"<<endl
-        <<"MODELO DE FRANQUICIAS: "<<endl
+        <<"MODELO FRANQUICIAS HERISTIC: "<<endl
         <<"***********************"<<endl;
 //READING DATA
 //CITIES
