@@ -37,6 +37,6 @@ This repository contains input data for IP and Heuristc Approach:
 
              S[1]   S[2],....,S[T]
 
-             latitude      longitude     \beta_i
+             latitude      longitude     $\beta_i$
 
 * [Parameters](Instance_Brasil.txt): Thus, the parameters used in the aplication: $m=1775 , T=5, F=60000 , r=0.05  , G=1260000$ and vectors $R=(0.06 , 0.06 , 0.06 , 0.06 , 0.06)$, $S=(25200 , 25200 , 25200 , 25200 , 25200)$
