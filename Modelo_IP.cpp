@@ -170,7 +170,7 @@ int main()
 {
     cout<<endl<<endl
         <<"***********************"<<endl
-        <<"MODELO DE FRANQUICIAS: "<<endl
+        <<"MODELO FRANQUICIAS IP: "<<endl
         <<"***********************"<<endl;   
 //READING DATA
 //CITIES 
@@ -287,7 +287,7 @@ cout<<"Cargando datos franquicia..."<<endl;
  vector<double> Rk, Sk;
  vector<int> Bi;
 
-ifstream ff("Instancia_SPOLETO.txt");
+ifstream ff("Instance_Brasil.txt");
 if(ff.is_open()==true)
 {
     ff>>m>>t>>F>>r>>G;
