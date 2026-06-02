@@ -36,4 +36,4 @@ id	Location_Name	latitude	longitude	Demand_year_1  Demand_year_2  Demand_year_3 
 
              latitude      longitude     $\beta_i$
 
-* [Parameters]: Thus, the parameters used in the aplication: $m=1775 , T=5, F=60000 , r=0.05  , G=1260000$ and vectors $R=(0.06 , 0.06 , 0.06 , 0.06 , 0.06)$, $S=(25200 , 25200 , 25200 , 25200 , 25200)$
+* [Parameters](Instance_Brasil.txt): Thus, the parameters used in the aplication: $m=1775 , T=5, F=60000 , r=0.05  , G=1260000$ and vectors $R=(0.06 , 0.06 , 0.06 , 0.06 , 0.06)$, $S=(25200 , 25200 , 25200 , 25200 , 25200)$
