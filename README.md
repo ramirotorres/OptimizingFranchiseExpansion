@@ -20,11 +20,11 @@ C++ files:
 
 This repository contains the input data for the IP and Heuristic approaches.
 
-* [`coordenadas_brasil.txt`](coordenadas_brasil.txt): A geographical representation of potential locations for opening new franchises is provided, based on their latitude and longitude coordinates. The total number of areas considered is (m = 1{,}775), and the time horizon (T = 5). Moreover, each geographical area includes an estimate of consumer demand ((D_{ik})) during the franchise contract period. Specifically, each row represents:
+* [`coordenadas_brasil.txt`](coordenadas_brasil.txt): A geographical representation of potential locations for opening new franchises is provided, based on their latitude and longitude coordinates. The total number of areas considered is $m = 1,775$, and the time horizon $T = 5$. Moreover, each geographical area includes an estimate of consumer demand ($D_{ik}$) during the franchise contract period. Specifically, each row represents:
  
           id	Location_Name	latitude	longitude	Demand_year_1  Demand_year_2  Demand_year_3  Demand_year_4  Demand_year_5
  
-* [`frontera_brasil.txt`](frontera_brasil.txt): The file contains the borders between areas (parameter (\delta_{ij} \in {0,1})). If an outlet has no neighboring areas, the closest outlet is considered a neighbor.
+* [`frontera_brasil.txt`](frontera_brasil.txt): The file contains the borders between areas (parameter $\delta_{ij} \in {0,1}$). If an outlet has no neighboring areas, the closest outlet is considered a neighbor.
 
 * [`Instance_Brasil.txt`](Instance_Brasil.txt): The file contains the following data:
 
