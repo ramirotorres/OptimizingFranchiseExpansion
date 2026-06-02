@@ -10,11 +10,12 @@ The code is written in C++ programming language interface. The ```Gurobi``` pack
 The IPs formulation provie the optimal solution, meanwhile heuristics can lead to suboptimal decisions because they explore only a tiny percentage of possible solutions. 
 
 
-* [`ReadMe.md`](ReadMe.md): This file.(M<sub>1</sub>).
-C++ files:(M<sub>1</sub>).
-* [`constantes.h`](contantes.h): Contains the Gurobi parameters and C++ libraries.
+* [`ReadMe.md`](ReadMe.md): This file.
+  
+C++ files:
 * [`Modelo_IP.cpp`](Modelo_IP): MIP model (M<sub>1</sub>).
 * [`Modelo_Heuristica.cpp`](Modelo_IP): Solution Approach (Heuristic Approach) (M<sub>1</sub>).
+* [`constantes.h`](contantes.h): Contains the Gurobi parameters and C++ libraries.
 
 This repository contains input data for IP and Hueristc Approach:
 
