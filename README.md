@@ -36,7 +36,7 @@ S[1] S[2],....,S[T]
 
 latitude longitude $\beta$
 
-Thus, the parameters used in the aplication:
+* [Parameters]: Thus, the parameters used in the aplication:
 
 m=1775 
 
