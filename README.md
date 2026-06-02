@@ -13,19 +13,18 @@ The IPs formulation provide the optimal solution, meanwhile heuristics can lead 
 * [`ReadMe.md`](ReadMe.md): This file.
   
 C++ files:
-* [`Modelo_IP.cpp`](Modelo_IP.cpp): MIP model (M<sub>1</sub>).
-* [`Modelo_Heuristica.cpp`](Modelo_Heuristica.cpp): Solution Approach (Heuristic Approach) (M<sub>1</sub>).
+* [`Modelo_IP.cpp`](Modelo_IP.cpp): MIP model.
+* [`Modelo_Heuristica.cpp`](Modelo_Heuristica.cpp): Solution Approach (Heuristic Approach) .
 * [`constantes.h`](constantes.h): Contains the Gurobi parameters and C++ libraries.
 
-This repository contains input data for IP and Hueristc Approach:
+This repository contains input data for IP and Heuristc Approach:
 
-* [`coordenadas_brasil.txt`](Coordenates): A geographical representation of potential locations for opening new franchises, based on their latitude and longitude coordinates. The total number of areas considered is 1,775. Moreover, each geographic area is complemented by the estimation of consumer demand during the period of the franchisee contract. Each row represents:
+* [`coordenadas_brasil.txt`](coordenadas_brasil.txt): A geographical representation of potential locations for opening new franchises, based on their latitude and longitude coordinates. The total number of areas considered is m=1,775. Moreover, each geographic area is complemented by the estimation of consumer demand (D_ik) during the period of the franchisee contract. This, each row represents:
 id	Location_Name	latitude	longitude	Demand_year_1  Demand_year_2  Demand_year_3  Demand_year_4  Demand_year_5
-  (M<sub>1</sub>).
+ 
+* [`frontera_brasil.txt`](frontera_brasil.txt): The file contains the borders among areas (parameter $\delta_{ij}\in \{0,1\}$). If some oulet has no no border, the closest oulet is considered as a border. 
 
-* [`frontera_brasil.txt`](frontera_brasil.txt): The file contains the the locations with geographical border and their distance (M<sub>1</sub>) 
-
-* [`Instance_Brasil.txt`](Instance_Brasil.txt): The file contains the following data (M<sub>2</sub>).
+* [`Instance_Brasil.txt`](Instance_Brasil.txt): The file contains the following dat:
 
 m T
 F r G
@@ -33,7 +32,8 @@ R[1] R[2],....,R[T]
 S[1] S[2],....,S[T]
 latitude longitude \beta
 
-Thus, the parameters used in the aplication
+Thus, the parameters used in the aplication:
+
 m=1775 
 T=5
 F=60000 
