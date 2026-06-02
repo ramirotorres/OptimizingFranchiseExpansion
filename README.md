@@ -6,8 +6,7 @@ The files in this code repository are updated and commented versions of the code
             Optimizing Franchise Expansion: Insights from Emerging Markets
 
 ## Main files in this repository
-The code is written in C++ programming language interface. The ```Gurobi``` package is needed for the linear models and run the the C++ programs. 
-The IPs formulation provide the optimal solution, meanwhile heuristics can lead to suboptimal decisions because they explore only a tiny percentage of possible solutions. 
+The code is written using the C++ programming language. The Gurobi package is required to solve the linear models and execute the C++ programs. Integer Programming (IP) formulations provide optimal solutions, whereas heuristic methods may lead to suboptimal decisions because they explore only a small fraction of the possible solution space.
 
 
 * [`ReadMe.md`](ReadMe.md): This file.
@@ -19,13 +18,13 @@ C++ files:
 
 ## Input data
 
-This repository contains input data for IP and Heuristc Approach:
+This repository contains the input data for the IP and Heuristic approaches.
 
-* [`coordenadas_brasil.txt`](coordenadas_brasil.txt): A geographical representation of potential locations for opening new franchises, based on their latitude and longitude coordinates. The total number of areas considered is $m=1,775$ and $T=5$. Moreover, each geographic area is complemented by the estimation of consumer demand ($D_ik$) during the period of the franchisee contract. This, each row represents:
+* [`coordenadas_brasil.txt`](coordenadas_brasil.txt): A geographical representation of potential locations for opening new franchises is provided, based on their latitude and longitude coordinates. The total number of areas considered is (m = 1{,}775), and the time horizon (T = 5). Moreover, each geographical area includes an estimate of consumer demand ((D_{ik})) during the franchise contract period. Specifically, each row represents:
  
           id	Location_Name	latitude	longitude	Demand_year_1  Demand_year_2  Demand_year_3  Demand_year_4  Demand_year_5
  
-* [`frontera_brasil.txt`](frontera_brasil.txt): The file contains the borders among areas (parameter $\delta_{ij}\in {0,1}$). If some oulet has no no border, the closest oulet is considered as a border. 
+* [`frontera_brasil.txt`](frontera_brasil.txt): The file contains the borders between areas (parameter (\delta_{ij} \in {0,1})). If an outlet has no neighboring areas, the closest outlet is considered a neighbor.
 
 * [`Instance_Brasil.txt`](Instance_Brasil.txt): The file contains the following data:
 
@@ -39,4 +38,4 @@ This repository contains input data for IP and Heuristc Approach:
 
              latitude      longitude     $\beta_i$
 
-* [Parameters](Instance_Brasil.txt): Thus, the parameters used in the aplication: $m=1775 , T=5, F=60000 , r=0.05  , G=1260000$ and vectors $R=(0.06 , 0.06 , 0.06 , 0.06 , 0.06)$, $S=(25200 , 25200 , 25200 , 25200 , 25200)$
+* [Parameters](Instance_Brasil.txt): Thus, the parameters used in this application are: $m=1775 , T=5, F=60000 , r=0.05  , G=1260000$ and vectors $R=(0.06 , 0.06 , 0.06 , 0.06 , 0.06)$, $S=(25200 , 25200 , 25200 , 25200 , 25200)$
