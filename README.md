@@ -14,7 +14,7 @@ The IPs formulation provide the optimal solution, meanwhile heuristics can lead 
   
 C++ files:
 * [`Modelo_IP.cpp`](Modelo_IP.cpp): MIP model (M<sub>1</sub>).
-* [`Modelo_Heuristica.cpp`](Modelo_IP.cpp): Solution Approach (Heuristic Approach) (M<sub>1</sub>).
+* [`Modelo_Heuristica.cpp`](Modelo_Heuristica.cpp): Solution Approach (Heuristic Approach) (M<sub>1</sub>).
 * [`constantes.h`](constantes.h): Contains the Gurobi parameters and C++ libraries.
 
 This repository contains input data for IP and Hueristc Approach:
