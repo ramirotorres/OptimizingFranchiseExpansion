@@ -3,11 +3,11 @@
 
 The files in this code repository are updated and commented versions of the code used for the following work:
 
-Optimizing Franchise Expansion: Insights from Emerging Markets
+           Optimizing Franchise Expansion: Insights from Emerging Markets
 
 ## Main files in this repository
-The code is written in C++ programming language interface. The ```Gurobi``` package is needed for the linear models and run the programs. 
-The IPs formulation provie the optimal solution, meanwhile heuristics can lead to suboptimal decisions because they explore only a tiny percentage of possible solutions. 
+The code is written in C++ programming language interface. The ```Gurobi``` package is needed for the linear models and run the the C++ programs. 
+The IPs formulation provide the optimal solution, meanwhile heuristics can lead to suboptimal decisions because they explore only a tiny percentage of possible solutions. 
 
 
 * [`ReadMe.md`](ReadMe.md): This file.
