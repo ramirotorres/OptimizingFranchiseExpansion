@@ -27,17 +27,27 @@ id	Location_Name	latitude	longitude	Demand_year_1  Demand_year_2  Demand_year_3 
 * [`Instance_Brasil.txt`](Instance_Brasil.txt): The file contains the following dat:
 
 m T
+
 F r G
+
 R[1] R[2],....,R[T]
+
 S[1] S[2],....,S[T]
-latitude longitude \beta
+
+latitude longitude $\beta$
 
 Thus, the parameters used in the aplication:
 
 m=1775 
+
 T=5
+
 F=60000 
+
 r=0.05 
+
 G=1260000
+
 R=(0.06 , 0.06 , 0.06 , 0.06 , 0.06)
+
 S=(25200 , 25200 , 25200 , 25200 , 25200)
