@@ -28,7 +28,7 @@ class ciudad
 private:
     int id;
     string Nombre;
-    pair<double,double> coordenada;//latitud y longitud en polares
+    pair<double,double> coordenada;
 public:
     vector<int> demanda;
     list<int> frontera;
@@ -92,10 +92,10 @@ friend istream& operator>>(istream& is, ciudad& c)
 class Modelo
 {
 private:
-  // Puntero al Solver
+  // Solver
 GRBEnv* env_modelo;
 GRBModel*  modelo_ip;
-    // Vector de (punteros a las) variables
+    // Vector of variables
     
   vector< vector<GRBVar> >  _x;//x_ij
   vector< GRBVar >  _y;//y_i
@@ -161,16 +161,13 @@ int Obt_N_Nodos()
 };
 
 double distancia_coord(ciudad c1,ciudad c2);
-/* void leer_instancia(string ARCHIVO,int&m, int&t, double &F, double& r,
-double& alfa, double& G,  
-vector<double> &Rk,vector<double>& Sk,vector<int>& Bi,
-vector<vector<int> > &Dik, vector<vector<double> > &dij,vector<vector<int> > &fij);
-*/
+
+
 int main()
 {
     cout<<endl<<endl
         <<"***********************"<<endl
-        <<"MODELO FRANQUICIAS IP: "<<endl
+        <<" FRANCHISE  IP MODEL: "<<endl
         <<"***********************"<<endl;   
 //READING DATA
 //CITIES 
@@ -190,13 +187,12 @@ if(fa.is_open()==true)
 }
 else
 {
-    cout<<"Problemas de lectura"<<endl;
+    cout<<"Error: Cities file..."<<endl;
 }
 fa.close();
 
-//Se ingresan como áreas de frontera si son menores que el promedio
 //AREAS ARE CONSIDERED IN THE BORDER IF THE DISTANCE IS LESS THAN THE AVERAGE
-cout<<"... Calculando fronteras"<<endl;
+cout<<"Computing Borders..."<<endl;
 for(int ci=0;ci<Ciudades.size();ci++)
 {
     for(int cj=ci+1;cj<Ciudades.size();cj++)
@@ -210,9 +206,6 @@ for(int ci=0;ci<Ciudades.size();ci++)
 }
 //READING THE FILE WITH BORDERS AREAS. 
 //BORDER AREAS INCLUDED IN THE PREVIOUS PHASE ARE NOT CONSIDERED  
-//leyendo archivo de fronteras
-//Del archivo de frontera se ingresan aquellas que la distancia es mayor al promedio
-//se buscan y si existen sus coordenadas se las ingresa.
 
 fa.open("frontera_brasil.txt");
 if(fa.is_open()==true)
@@ -246,14 +239,13 @@ if(fa.is_open()==true)
 }
 else
 {
-    cout<<"Problemas de lectura frontera..."<<endl;
+    cout<<"Error: Border file..."<<endl;
 }
 fa.close();
 
 //EVERY OUTLET HAS TO HAVE AT LEAST ONE BORDER CITY. 
 //IF SOME OUTLET HAS NO BORDER, THE CLOSEST OUTLET IS INCLUDED
-//Toda ciudad debe tener frontera. Si la zona ci no tiene frontera, entonces se ingresa 
-//la zona más cercana a ci
+
 for(int ci=0;ci<Ciudades.size();ci++)
 {
     Ciudades[ci].frontera.sort();
@@ -279,8 +271,8 @@ for(int ci=0;ci<Ciudades.size();ci++)
     }
 }
 
-//LOADING DATA OF THE FRANCHISER: SPOLETO
-cout<<"Cargando datos franquicia..."<<endl;
+//LOADING DATA OF THE FRANCHISER: 
+cout<<"Loading Franchise instance..."<<endl;
 
  double F,r,G;
  int m,t;
@@ -311,7 +303,7 @@ if(ff.is_open()==true)
             if((Ciudades[ci].latitud()==lt)and(Ciudades[ci].longitud()==lg))
             {
                 encontrado=true;
-                Ciudades[ci].Bi+=bi;//Se carga Bi=Número de locales del mismo tipo de producto
+                Ciudades[ci].Bi+=bi;
                 break;
             }
         }
@@ -321,11 +313,11 @@ if(ff.is_open()==true)
 }
 else
 {
-    cout<<"Error de apertura datos franquicia"<<endl;
+    cout<<"Error: Instance file...."<<endl;
 }
 ff.close();
 
-cout<<"PARÁMETROS:"<<endl
+cout<<"PARAMETERS:"<<endl
     <<"F="<<F<<endl
     <<"r="<<r<<endl
     <<"alfa="<<alfa<<endl
@@ -362,7 +354,7 @@ ofstream f_sol("Resultados.csv",ios::app);
     return 0;
 }
 
-//https://www.ehowenespanol.com/calcular-distancia-puntos-latitud-longitud-como_452715/
+
 //Fórmula de Haversine
 double distancia_coord(ciudad c1,ciudad c2)
 {
@@ -406,8 +398,6 @@ void Modelo::incluir_parametros()
     modelo_ip->getEnv().set(GRB_IntParam_Symmetry, 2);
     modelo_ip->getEnv().set(GRB_DoubleParam_NodefileStart, 0.5);
 
-    //modelo_ip->getEnv().set(GRB_IntParam_NoRelHeuristic,1);
-    //modelo_ip->getEnv().set(GRB_DoubleParam_Heuristics,0.1);
     
     modelo_ip->getEnv().set(GRB_IntParam_Seed, 1);
     modelo_ip->getEnv().set(GRB_DoubleParam_TimeLimit, TIEMPO_IP);
@@ -484,28 +474,7 @@ void Modelo::crear_vars(vector<ciudad> C, double F,double r, vector<double> Rk, 
 
 void Modelo::crear_restricciones(vector<ciudad> C, double G,double F,double r,  vector<double> Rk, vector<double> Sk)
 {
- /*  
-cout<<"Restricción extra..."<<endl;
-for(int i=0;i<m;i++)
-{
-    ostringstream restr0;
-    restr0 << "Rest_0_" <<i;
-    GRBLinExpr eq_restr0 = 0;
 
-    double costo_x=0;
-
-     for(int j=0;j<m;j++)
-        if(i!=j)
-        {
-            for(int k=0;k<Rk.size();k++)
-            {
-                costo_x = (Dik[j][k]/(Bi[j]+1)*exp(-alfa_exp*dij[i][j]));
-            }
-            eq_restr0+=costo_x*_x[i][j];
-        }
-    modelo_ip->addConstr(eq_restr0<=ceil(0.1*Dik[i][0]/(Bi[i]+1)) , restr0.str());
-}
-*/
 
 int m, t;
 m=C.size();
@@ -539,7 +508,6 @@ t=C[0].demanda.size();
             if((j!=i)and(_Ady[i][j]>0))
             {
                 eq_restr2+=_x[i][j]; 
-                //modelo_ip->addConstr(_x[i][j]<=_y[i]); 
             }
         }
         modelo_ip->addConstr(eq_restr2<=_y.size()*_y[i] , restr2.str());      
@@ -663,64 +631,3 @@ ostream& Modelo::presentar_sol(ostream& os, int &nl, vector<ciudad> C)
     
     return os;
 }
-/*
-void leer_instancia(string ARCHIVO,int&m, int&t, double &F, double& r,
-double& alfa, double& G,  
-vector<double> &Rk,vector<double>& Sk,vector<int>& Bi,
-vector<vector<int> > &Dik, vector<vector<double> > &dij,vector<vector<int> > &fij)
-{
-
-    ifstream fo(ARCHIVO.c_str());
-    if(fo.is_open()==true)
-    {
-//LECTURA DE PARÁMETROS
-        fo>>m>>t>>F>>r>>alfa>>G;
-        Rk.resize(t);
-        Sk.resize(t);
-        Bi.resize(m);
-
-        Dik.resize(m);
-        dij.resize(m);
-        fij.resize(m);
-        for(int i=0;i<Dik.size();i++)
-        {
-            Dik[i].resize(t);
-            dij[i].resize(m);
-            fij[i].resize(m);
-        }
-        for(int i=0;i<Rk.size();i++)
-            fo>>Rk[i];
-
-        for(int i=0;i<Sk.size();i++)
-            fo>>Sk[i];
-        
-        for(int i=0;i<Bi.size();i++)
-            fo>>Bi[i];
-        
-        for(int i=0;i<Dik.size();i++)
-        {
-            for(int j=0;j<Dik[i].size();j++)
-            {
-                 fo>>Dik[i][j];
-            }
-        }
-
-        for(int i=0;i<dij.size();i++)
-        {
-            for(int j=0;j<dij[i].size();j++)
-            {
-                 fo>>dij[i][j];
-            }
-        } 
-
-        for(int i=0;i<fij.size();i++)
-        {
-            for(int j=0;j<fij[i].size();j++)
-            {
-                 fo>>fij[i][j];
-            }
-        } 
-    }
-    fo.close();
-}
-*/
