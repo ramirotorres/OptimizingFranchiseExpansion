@@ -37,7 +37,7 @@ class ciudad
 private:
     int id;
     string Nombre;
-    pair<double,double> coordenada;//latitud y longitud en polares
+    pair<double,double> coordenada;
 public:
     vector<double> demanda;
     list<int> frontera;
@@ -91,7 +91,7 @@ friend istream& operator>>(istream& is, ciudad& c)
     for(int i=0;i<c.demanda.size();i++)
     {
         is>>c.demanda[i];
-        c.demanda[i]=24*c.demanda[i];//demanda mensual multiplicada por 2
+        c.demanda[i]=24*c.demanda[i];
     }
 
     return is;
@@ -101,16 +101,16 @@ friend istream& operator>>(istream& is, ciudad& c)
 class Modelo
 {
 private:
-  // Puntero al Solver
+  //  Solver
 GRBEnv* env_modelo;
 GRBModel*  modelo_ip;
-    // Vector de (punteros a las) variables
+    // Vector of variables
 
   vector< vector<GRBVar> >  _x;//x_ij
   vector< GRBVar >  _y;//y_i
 
 public:
-  // Constructor y destructor
+  // Constructor and destructor
   Modelo();
   ~Modelo();
 
@@ -178,10 +178,10 @@ double Obj_var_Y(int i)
 class Modelo_Reducido
 {
 private:
-  // Puntero al Solver
+  //  Solver
 GRBEnv* env_modelo;
 GRBModel*  modelo_ip;
-    // Vector de (punteros a las) variables
+    // Vector of variables
 
   vector< vector<GRBVar> >  _x;//x_ij
   vector< GRBVar >  _y;//y_i
@@ -247,17 +247,11 @@ int variante_2(vector<ciudad> Ciudades,vector<int> S,vector<int> C_factible);
 void Heuristica(vector<ciudad> Ciudades,double F,double r,vector<double> Rk,vector<double> Sk, double G, int L, int MAX_ITR,double &zf, vector<int> &Sf);
 
 
-
-/* void leer_instancia(string ARCHIVO,int&m, int&t, double &F, double& r,
-double& alfa, double& G,
-vector<double> &Rk,vector<double>& Sk,vector<int>& Bi,
-vector<vector<int> > &Dik, vector<vector<double> > &dij,vector<vector<int> > &fij);
-*/
 int main()
 {
     cout<<endl<<endl
         <<"***********************"<<endl
-        <<"MODELO FRANQUICIAS HERISTIC: "<<endl
+        <<" FRANCHISE HERISTIC: "<<endl
         <<"***********************"<<endl;
 //READING DATA
 //CITIES
@@ -277,13 +271,13 @@ if(fa.is_open()==true)
 }
 else
 {
-    cout<<"Problemas de lectura"<<endl;
+    cout<<"Error:  Cities file..."<<endl;
 }
 fa.close();
 
 //Se ingresan como áreas de frontera si son menores que el promedio
 //AREAS ARE CONSIDERED IN THE BORDER IF THE DISTANCE IS LESS THAN THE AVERAGE
-cout<<"... Calculando fronteras"<<endl;
+cout<<"... Computing borders "<<endl;
 for(int ci=0;ci<Ciudades.size();ci++)
 {
     for(int cj=ci+1;cj<Ciudades.size();cj++)
@@ -333,7 +327,7 @@ if(fa.is_open()==true)
 }
 else
 {
-    cout<<"Problemas de lectura frontera..."<<endl;
+    cout<<"ERROR: border file..."<<endl;
 }
 fa.close();
 
@@ -366,8 +360,8 @@ for(int ci=0;ci<Ciudades.size();ci++)
     }
 }
 
-//LOADING DATA OF THE FRANCHISER: SPOLETO
-cout<<"Cargando datos franquicia..."<<endl;
+//LOADING DATA OF THE FRANCHISER: 
+cout<<"Loading franchise data ..."<<endl;
 
  double F,r,G;
  int m,t;
@@ -408,11 +402,11 @@ if(ff.is_open()==true)
 }
 else
 {
-    cout<<"Error de apertura datos franquicia"<<endl;
+    cout<<"Error: Franchise file..."<<endl;
 }
 ff.close();
 
-cout<<"PARÁMETROS:"<<endl
+cout<<"PARAMETERS:"<<endl
     <<"F="<<F<<endl
     <<"r="<<r<<endl
     <<"alfa="<<alfa<<endl
@@ -430,7 +424,7 @@ ofstream f_sol("Resultados.txt",ios::app);
 for(L=3;L<=8;L++)
 //for(alfa=0.002;alfa<=0.041;alfa=alfa+0.002)
     {
-    //APLICACIÓN HEURISTICA
+    //HEURISTIC
 
     vector<int> Sf;
     double zf=0;
@@ -443,7 +437,7 @@ for(L=3;L<=8;L++)
     th=(th2-th1)/CLOCKS_PER_SEC;
 
 
-    //APLICACIÓN MODELO ENTERO
+    // LP MODEL
     
     Modelo MF;
     MF.incluir_parametros();
@@ -467,8 +461,6 @@ for(L=3;L<=8;L++)
     return 0;
 }
 
-
-//https://www.ehowenespanol.com/calcular-distancia-puntos-latitud-longitud-como_452715/
 //Fórmula de Haversine
 double distancia_coord(ciudad c1,ciudad c2)
 {
@@ -702,15 +694,6 @@ cout<<"Y_factible="<<Y_factible.size()<<endl;
         Sf=Y_factible;
     }
 
-/*
-    Modelo MF;
-    MF.incluir_parametros();
-    MF.crear_vars(Ciudades,F,r,Rk,Sk);
-    MF.crear_restricciones(Ciudades, G, F, r,  Rk,  Sk);
-    MF.fijar_vars_Y(Sf);
-    MF.resolver();
-    cin.get();
-*/
 }
 
 
@@ -737,14 +720,8 @@ Modelo::~Modelo()
 void Modelo::incluir_parametros()
 {
     modelo_ip->getEnv().resetParams();
-
-    //modelo_ip->getEnv().set(GRB_IntParam_Cuts, 0);
-    //modelo_ip->getEnv().set(GRB_IntParam_MIPFocus, 1);
-    //modelo_ip->getEnv().set(GRB_IntParam_Symmetry, 2);
     modelo_ip->getEnv().set(GRB_DoubleParam_NodefileStart, 0.5);
 
-    //modelo_ip->getEnv().set(GRB_IntParam_NoRelHeuristic,1);
-    //modelo_ip->getEnv().set(GRB_DoubleParam_Heuristics,0.1);
 
     modelo_ip->getEnv().set(GRB_IntParam_Seed, 1);
     modelo_ip->getEnv().set(GRB_DoubleParam_TimeLimit, TIEMPO_IP);
@@ -1162,64 +1139,3 @@ ostream& Modelo_Reducido::presentar_sol(ostream& os, vector<ciudad> C)
 }
 
 
-/*
-void leer_instancia(string ARCHIVO,int&m, int&t, double &F, double& r,
-double& alfa, double& G,
-vector<double> &Rk,vector<double>& Sk,vector<int>& Bi,
-vector<vector<int> > &Dik, vector<vector<double> > &dij,vector<vector<int> > &fij)
-{
-
-    ifstream fo(ARCHIVO.c_str());
-    if(fo.is_open()==true)
-    {
-//LECTURA DE PARÁMETROS
-        fo>>m>>t>>F>>r>>alfa>>G;
-        Rk.resize(t);
-        Sk.resize(t);
-        Bi.resize(m);
-
-        Dik.resize(m);
-        dij.resize(m);
-        fij.resize(m);
-        for(int i=0;i<Dik.size();i++)
-        {
-            Dik[i].resize(t);
-            dij[i].resize(m);
-            fij[i].resize(m);
-        }
-        for(int i=0;i<Rk.size();i++)
-            fo>>Rk[i];
-
-        for(int i=0;i<Sk.size();i++)
-            fo>>Sk[i];
-
-        for(int i=0;i<Bi.size();i++)
-            fo>>Bi[i];
-
-        for(int i=0;i<Dik.size();i++)
-        {
-            for(int j=0;j<Dik[i].size();j++)
-            {
-                 fo>>Dik[i][j];
-            }
-        }
-
-        for(int i=0;i<dij.size();i++)
-        {
-            for(int j=0;j<dij[i].size();j++)
-            {
-                 fo>>dij[i][j];
-            }
-        }
-
-        for(int i=0;i<fij.size();i++)
-        {
-            for(int j=0;j<fij[i].size();j++)
-            {
-                 fo>>fij[i][j];
-            }
-        }
-    }
-    fo.close();
-}
-*/
