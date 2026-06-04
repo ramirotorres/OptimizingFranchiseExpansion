@@ -38,4 +38,8 @@ This repository contains the input data for the IP and Heuristic approaches.
 
              latitude      longitude     $\beta_i$
 
-* [Parameters](Instance_Brasil.txt): Thus, the parameters used in this application are: $m=1775 , T=5, F=60000 , r=0.05  , G=1260000$ and vectors $R=(0.06 , 0.06 , 0.06 , 0.06 , 0.06)$, $S=(25200 , 25200 , 25200 , 25200 , 25200)$
+* [Parameters](Instance_Brasil.txt): Thus, the parameters used in this application are:
+                  m=1775 , T=5,
+                  F=60000 , r=0.05  , G=1260000
+                  R=(0.06 , 0.06 , 0.06 , 0.06 , 0.06)
+                  S=(25200 , 25200 , 25200 , 25200 , 25200)
